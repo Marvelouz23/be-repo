@@ -23,6 +23,12 @@ const RestaurantSchema = new mongoose.Schema({
     closeTime: {
         type: String,
         required: [true,'Please add close time']
+    },
+    // References the owner user (null if no owner assigned)
+    owner: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        default: null
     }
 },{
     toJSON: {virtuals:true},

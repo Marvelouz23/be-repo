@@ -22,8 +22,14 @@ const UserSchema=new mongoose.Schema({
     },
     role: {
         type:String,
-        enum: ['user','admin'],
+        enum: ['user','admin','owner'],
         default: 'user'
+    },
+    // Tracks which restaurant this owner manages (null for non-owners)
+    ownedRestaurant: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Restaurant',
+        default: null
     },
     password: {
         type:String,
